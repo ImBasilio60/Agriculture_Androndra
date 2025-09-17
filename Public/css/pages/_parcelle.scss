@@ -1,0 +1,176 @@
+/* Bouton principal pour l'ajout */
+.primary-btn {
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Tableau de données */
+.data-table {
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  padding: 1.5rem;
+  overflow-x: auto; /* Permet le défilement horizontal sur les petits écrans */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Supprime les espaces entre les cellules */
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+tr:last-child td {
+  border-bottom: none; /* Supprime la bordure de la dernière ligne */
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  margin: 0 0.25rem;
+  color: var(--text-light); /* Couleur par défaut, plus discrète */
+  transition: color 0.3s;
+}
+
+.action-btn:hover {
+  color: var(--text-dark);
+}
+
+.edit-btn:hover {
+  color: var(--edit-btn-color);
+}
+
+.delete-btn:hover {
+  color: var(--delete-btn-color);
+}
+
+@media (max-width: 768px) {
+  .data-table {
+    padding: 0.5rem;
+  }
+
+  th,
+  td {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+}
+
+//--------------------------------------------------------------------------------------------------------
+/* Styles de la modale */
+.modal {
+  display: none; /* Cache la modale par défaut */
+  position: fixed;
+  z-index: 20; /* Assure que la modale est au-dessus des autres éléments */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  position: relative;
+  animation: fadeIn 0.5s;
+}
+
+.close-btn {
+  color: var(--text-dark);
+  font-size: 2rem;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: var(--delete-btn-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 20% auto;
+  }
+}
+@media (max-width: 576px) {
+  .modal-content {
+    margin: 50% auto;
+  }
+}
