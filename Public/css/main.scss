@@ -1,0 +1,13 @@
+@use "base/reset" as *;
+
+//abstract
+@use "abstract/variables" as *;
+
+//component
+
+//layout
+@use "layout/body" as *;
+@use "layout/sidebar" as *;
+
+//pages
+@use "pages/dashboard" as *;

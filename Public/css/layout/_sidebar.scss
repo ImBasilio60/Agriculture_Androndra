@@ -1,0 +1,42 @@
+.sidebar {
+  width: 250px;
+  background-color: var(--surface-color);
+  padding: 2rem 1rem;
+  box-shadow: 2px 0 5px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.navigation ul {
+  list-style: none;
+}
+
+.navigation a {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+  background-color: var(--primary-color);
+  color: var(--surface-color);
+}
+
+.navigation a i {
+  margin-right: 1rem;
+  width: 20px;
+}

@@ -1,0 +1,260 @@
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.header-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-dashboard h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.dashboard-widgets {
+  display: grid;
+  gap: 2rem;
+  grid-template-areas:
+    "parcelles cultures intrants recoltes"
+    "weather weather weather weather";
+}
+
+.weather-widget {
+  grid-area: weather;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.widget-parcelles {
+  grid-area: parcelles;
+}
+
+.widget-cultures {
+  grid-area: cultures;
+}
+
+.widget-intrants {
+  grid-area: intrants;
+}
+
+.widget-recoltes {
+  grid-area: recoltes;
+}
+
+// widgets
+.widget {
+  background-color: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.widget:hover {
+  transform: translateY(-5px);
+}
+
+.widget-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--surface-color);
+  font-size: 1.8rem;
+}
+
+.widget-icon.primary {
+  background-color: var(--primary-color);
+}
+.widget-icon.green {
+  background-color: #388e3c;
+}
+.widget-icon.blue {
+  background-color: #1976d2;
+}
+.widget-icon.orange {
+  background-color: #f57c00;
+}
+
+.widget-content h3 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.25rem;
+}
+
+.widget-content p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+//weather-widget
+.weather-widget {
+  grid-column: span 2; /* Ce widget prendra plus d'espace */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.weather-info {
+  font-size: 1.2rem;
+}
+
+.weather-details {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+#weather-icon {
+  font-size: 4rem;
+  color: var(--primary-color);
+  margin: 1rem 0;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+}
+
+.cloud-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cloud {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0.5;
+  animation: move-cloud linear infinite;
+}
+
+.cloud-1 {
+  width: 150px;
+  height: 150px;
+  left: 10%;
+  top: 20%;
+  animation-duration: 25s;
+  transform: scale(0.8);
+}
+
+.cloud-2 {
+  width: 120px;
+  height: 120px;
+  left: 60%;
+  top: 50%;
+  animation-duration: 35s;
+  animation-delay: 5s;
+  transform: scale(0.6);
+}
+
+.cloud-3 {
+  width: 180px;
+  height: 180px;
+  left: 80%;
+  top: 80%;
+  animation-duration: 40s;
+  animation-delay: 10s;
+  transform: scale(1);
+}
+
+@keyframes move-cloud {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(200vw);
+  }
+}
+
+/* Media Queries pour la réactivité */
+
+/* Media query pour les tablettes (entre 481px et 768px) */
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: relative;
+  }
+  .navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .navigation a {
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .navigation a i {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  .logo {
+    display: none;
+  }
+  .main-content {
+    padding: 1rem;
+  }
+  .header-dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  /* Les widgets passent en une colonne sur les mobiles */
+  .dashboard-widgets {
+    grid-template-areas:
+      "parcelles"
+      "cultures"
+      "intrants"
+      "recoltes"
+      "weather";
+  }
+  .dashboard-widgets .weather-widget {
+    grid-area: weather;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .dashboard-widgets {
+    grid-template-areas:
+      "parcelles cultures"
+      "intrants recoltes"
+      "weather weather";
+  }
+}
