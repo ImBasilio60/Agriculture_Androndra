@@ -4,6 +4,9 @@
 @use "abstract/variables" as *;
 
 //component
+@use "component/modal" as *;
+@use "component/tables" as *;
+@use "component/button" as *;
 
 //layout
 @use "layout/body" as *;
@@ -12,3 +15,4 @@
 //pages
 @use "pages/dashboard" as *;
 @use "pages/parcelle" as *;
+@use "pages/culture" as *;
