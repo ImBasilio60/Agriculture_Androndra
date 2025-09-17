@@ -1,0 +1,19 @@
+#recolte-modal {
+  .modal-content {
+    margin: 2% auto;
+  }
+}
+@media (max-width: 768px) {
+  #recolte-modal {
+    .modal-content {
+      margin: 20% auto;
+    }
+  }
+}
+@media (max-width: 576px) {
+  #recolte-modal {
+    .modal-content {
+      margin: 50% auto;
+    }
+  }
+}

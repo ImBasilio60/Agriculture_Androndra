@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Récoltes - Androndra</title>
+    <link rel="stylesheet" href="../Public/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="recoltes-page">
+    <aside class="sidebar">
+      <div class="logo">
+        <h1>Androndra</h1>
+      </div>
+      <nav class="navigation">
+        <ul>
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i> Tableau de bord</a>
+          </li>
+          <li>
+            <a href="parcelles.html"
+              ><i class="fas fa-seedling"></i> Parcelles</a
+            >
+          </li>
+          <li>
+            <a href="cultures.html"><i class="fas fa-leaf"></i> Cultures</a>
+          </li>
+          <li>
+            <a href="intrants.html"
+              ><i class="fas fa-dolly-flatbed"></i> Intrants</a
+            >
+          </li>
+          <li>
+            <a href="recoltes.html" class="active"
+              ><i class="fas fa-truck-loading"></i> Récoltes</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-tasks"></i> Suivis</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-map-marker-alt"></i> Localisations</a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="header-dashboard">
+        <h2>Gestion des récoltes</h2>
+        <button
+          id="add-recolte-btn"
+          class="primary-btn"
+          data-modal-target="recolte-modal"
+        >
+          <i class="fas fa-plus"></i> Ajouter une récolte
+        </button>
+      </header>
+
+      <section class="data-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Culture</th>
+              <th>Parcelle</th>
+              <th>Quantité</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>25 juin 2025</td>
+              <td>Tomate</td>
+              <td>Parcelle A1</td>
+              <td>15 kg</td>
+              <td>
+                <button class="action-btn edit-btn" data-id="1">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="action-btn delete-btn" data-id="1">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>22 juin 2025</td>
+              <td>Salade</td>
+              <td>Parcelle B3</td>
+              <td>5 kg</td>
+              <td>
+                <button class="action-btn edit-btn" data-id="2">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="action-btn delete-btn" data-id="2">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>18 juin 2025</td>
+              <td>Carotte</td>
+              <td>Parcelle C2</td>
+              <td>20 kg</td>
+              <td>
+                <button class="action-btn edit-btn" data-id="3">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="action-btn delete-btn" data-id="3">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div id="recolte-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2>Ajouter une récolte</h2>
+          <form id="recolte-form">
+            <input type="hidden" id="recolte-id" />
+            <div class="form-group">
+              <label for="recolte-date">Date</label>
+              <input type="date" id="recolte-date" required />
+            </div>
+            <div class="form-group">
+              <label for="recolte-culture">Culture</label>
+              <input type="text" id="recolte-culture" required />
+            </div>
+            <div class="form-group">
+              <label for="recolte-parcelle">Parcelle</label>
+              <input type="text" id="recolte-parcelle" required />
+            </div>
+            <div class="form-group">
+              <label for="recolte-quantite">Quantité (kg)</label>
+              <input type="number" id="recolte-quantite" required />
+            </div>
+            <button type="submit" class="primary-btn">Enregistrer</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="../Public/js/app.js"></script>
+  </body>
+</html>
