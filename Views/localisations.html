@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Androndra - Gestion Agricole</title>
+    <title>Gestion des Localisations - Androndra</title>
     <link rel="stylesheet" href="../Public/css/main.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
-  <body class="parcelles-page">
+  <body class="localisations-page">
     <aside class="sidebar">
       <div class="logo">
         <h1>Androndra</h1>
@@ -21,7 +21,7 @@
             <a href="index.html"><i class="fas fa-home"></i> Tableau de bord</a>
           </li>
           <li>
-            <a href="parcelles.html" class="active"
+            <a href="parcelles.html"
               ><i class="fas fa-seedling"></i> Parcelles</a
             >
           </li>
@@ -42,7 +42,7 @@
             <a href="suivis.html"><i class="fas fa-tasks"></i> Suivis</a>
           </li>
           <li>
-            <a href="localisations.html"
+            <a href="localisations.html" class="active"
               ><i class="fas fa-map-marker-alt"></i> Localisations</a
             >
           </li>
@@ -52,13 +52,13 @@
 
     <main class="main-content">
       <header class="header-dashboard">
-        <h2>Gestion des parcelles</h2>
+        <h2>Gestion des localisations</h2>
         <button
-          id="add-parcelle-btn"
+          id="add-localisation-btn"
           class="primary-btn"
-          data-modal-target="parcelle-modal"
+          data-modal-target="localisation-modal"
         >
-          <i class="fas fa-plus"></i> Ajouter une parcelle
+          <i class="fas fa-plus"></i> Ajouter une localisation
         </button>
       </header>
 
@@ -66,17 +66,17 @@
         <table>
           <thead>
             <tr>
-              <th>Nom de la parcelle</th>
-              <th>Superficie (m²)</th>
-              <th>Type de sol</th>
+              <th>Nom de la ville</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Parcelle A1</td>
-              <td>500</td>
-              <td>Argileux</td>
+              <td>Antananarivo</td>
+              <td>-18.9167</td>
+              <td>47.5167</td>
               <td>
                 <button class="action-btn edit-btn" data-id="1">
                   <i class="fas fa-edit"></i>
@@ -87,9 +87,9 @@
               </td>
             </tr>
             <tr>
-              <td>Parcelle B3</td>
-              <td>750</td>
-              <td>Sableux</td>
+              <td>Fianarantsoa</td>
+              <td>-21.4444</td>
+              <td>47.0945</td>
               <td>
                 <button class="action-btn edit-btn" data-id="2">
                   <i class="fas fa-edit"></i>
@@ -100,9 +100,9 @@
               </td>
             </tr>
             <tr>
-              <td>Parcelle C2</td>
-              <td>600</td>
-              <td>Humifère</td>
+              <td>Toliara</td>
+              <td>-23.3667</td>
+              <td>43.6667</td>
               <td>
                 <button class="action-btn edit-btn" data-id="3">
                   <i class="fas fa-edit"></i>
@@ -115,30 +115,23 @@
           </tbody>
         </table>
       </section>
-
-      <div id="parcelle-modal" class="modal">
+      <div id="localisation-modal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
-          <h2>Ajouter une parcelle</h2>
-          <form id="parcelle-form">
-            <input type="hidden" id="parcelle-id" />
+          <h2>Ajouter une localisation</h2>
+          <form id="localisation-form">
+            <input type="hidden" id="localisation-id" />
             <div class="form-group">
-              <label for="parcelle-nom">Nom de la parcelle</label>
-              <input type="text" id="parcelle-nom" required />
+              <label for="localisation-ville">Nom de la ville</label>
+              <input type="text" id="localisation-ville" required />
             </div>
             <div class="form-group">
-              <label for="parcelle-superficie">Superficie (m²)</label>
-              <input type="number" id="parcelle-superficie" required />
+              <label for="localisation-latitude">Latitude</label>
+              <input type="text" id="localisation-latitude" required />
             </div>
             <div class="form-group">
-              <label for="parcelle-sol">Type de sol</label>
-              <select id="parcelle-sol" required>
-                <option value="">Sélectionner</option>
-                <option value="Argileux">Argileux</option>
-                <option value="Sableux">Sableux</option>
-                <option value="Humifère">Humifère</option>
-                <option value="Limoneux">Limoneux</option>
-              </select>
+              <label for="localisation-longitude">Longitude</label>
+              <input type="text" id="localisation-longitude" required />
             </div>
             <button type="submit" class="primary-btn">Enregistrer</button>
           </form>

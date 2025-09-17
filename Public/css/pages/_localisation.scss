@@ -1,0 +1,19 @@
+#localisation-modal {
+  .modal-content {
+    margin: 2% auto;
+  }
+}
+@media (max-width: 768px) {
+  #localisation-modal {
+    .modal-content {
+      margin: 20% auto;
+    }
+  }
+}
+@media (max-width: 576px) {
+  #localisation-modal {
+    .modal-content {
+      margin: 50% auto;
+    }
+  }
+}
