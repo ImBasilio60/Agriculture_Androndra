@@ -141,7 +141,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `del_parcelle` (IN `p_ID_parcelle` I
     WHERE ID_parcelle = p_ID_parcelle;
 
     INSERT INTO corbeille (nom_table, ID_enregistrement)
-    VALUES ('parcelle', p_ID_parcelle);
+    VALUES ('comportement', p_ID_parcelle);
 END$$
 
 DROP PROCEDURE IF EXISTS `del_plantation`$$
@@ -332,7 +332,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `restore_all` ()   BEGIN
                 UPDATE culture SET culture_supprime = 0 WHERE ID_culture = v_ID_enregistrement;
             WHEN 'intrant' THEN
                 UPDATE intrant SET intrant_supprime = 0 WHERE ID_intrant = v_ID_enregistrement;
-            WHEN 'parcelle' THEN
+            WHEN 'comportement' THEN
                 UPDATE parcelle SET parcelle_supprime = 0 WHERE ID_parcelle = v_ID_enregistrement;
             WHEN 'plantation' THEN
                 UPDATE plantation SET plantation_supprime = 0 WHERE ID_plantation = v_ID_enregistrement;
@@ -379,7 +379,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `restore_parcelle` (IN `p_ID_parcell
     WHERE ID_parcelle = p_ID_parcelle;
 
     DELETE FROM corbeille
-    WHERE nom_table = 'parcelle' AND ID_enregistrement = p_ID_parcelle;
+    WHERE nom_table = 'comportement' AND ID_enregistrement = p_ID_parcelle;
 END$$
 
 DROP PROCEDURE IF EXISTS `restore_plantation`$$
@@ -511,7 +511,7 @@ CREATE TABLE IF NOT EXISTS `localisation` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parcelle`
+-- Table structure for table `comportement`
 --
 
 DROP TABLE IF EXISTS `parcelle`;
@@ -665,7 +665,7 @@ CREATE TABLE IF NOT EXISTS `v_corbeille_detaillee` (
 DROP TABLE IF EXISTS `v_corbeille_detaillee`;
 
 DROP VIEW IF EXISTS `v_corbeille_detaillee`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_corbeille_detaillee`  AS SELECT `c`.`ID_corbeille` AS `ID_corbeille`, `c`.`nom_table` AS `nom_table`, `c`.`ID_enregistrement` AS `ID_enregistrement`, `cu`.`nom_culture` AS `nom_objet`, `c`.`date_suppression` AS `date_suppression` FROM (`corbeille` `c` join `culture` `cu` on(((`c`.`nom_table` = 'culture') and (`c`.`ID_enregistrement` = `cu`.`ID_culture`))))union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`i`.`nom_intrant` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `intrant` `i` on(((`c`.`nom_table` = 'intrant') and (`c`.`ID_enregistrement` = `i`.`ID_intrant`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`p`.`nom_parcelle` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `parcelle` `p` on(((`c`.`nom_table` = 'parcelle') and (`c`.`ID_enregistrement` = `p`.`ID_parcelle`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`pl`.`methode_culture` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `plantation` `pl` on(((`c`.`nom_table` = 'plantation') and (`c`.`ID_enregistrement` = `pl`.`ID_plantation`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`r`.`quantite_recoltee` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `recolte` `r` on(((`c`.`nom_table` = 'recolte') and (`c`.`ID_enregistrement` = `r`.`ID_recolte`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`s`.`details_suivi` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `suivi` `s` on(((`c`.`nom_table` = 'suivi') and (`c`.`ID_enregistrement` = `s`.`ID_suivi`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`t`.`nom_terrain` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `terrain` `t` on(((`c`.`nom_table` = 'terrain') and (`c`.`ID_enregistrement` = `t`.`ID_terrain`))))  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_corbeille_detaillee`  AS SELECT `c`.`ID_corbeille` AS `ID_corbeille`, `c`.`nom_table` AS `nom_table`, `c`.`ID_enregistrement` AS `ID_enregistrement`, `cu`.`nom_culture` AS `nom_objet`, `c`.`date_suppression` AS `date_suppression` FROM (`corbeille` `c` join `culture` `cu` on(((`c`.`nom_table` = 'culture') and (`c`.`ID_enregistrement` = `cu`.`ID_culture`))))union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`i`.`nom_intrant` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `intrant` `i` on(((`c`.`nom_table` = 'intrant') and (`c`.`ID_enregistrement` = `i`.`ID_intrant`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`p`.`nom_parcelle` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `parcelle` `p` on(((`c`.`nom_table` = 'comportement') and (`c`.`ID_enregistrement` = `p`.`ID_parcelle`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`pl`.`methode_culture` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `plantation` `pl` on(((`c`.`nom_table` = 'plantation') and (`c`.`ID_enregistrement` = `pl`.`ID_plantation`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`r`.`quantite_recoltee` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `recolte` `r` on(((`c`.`nom_table` = 'recolte') and (`c`.`ID_enregistrement` = `r`.`ID_recolte`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`s`.`details_suivi` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `suivi` `s` on(((`c`.`nom_table` = 'suivi') and (`c`.`ID_enregistrement` = `s`.`ID_suivi`)))) union select `c`.`ID_corbeille` AS `ID_corbeille`,`c`.`nom_table` AS `nom_table`,`c`.`ID_enregistrement` AS `ID_enregistrement`,`t`.`nom_terrain` AS `nom_objet`,`c`.`date_suppression` AS `date_suppression` from (`corbeille` `c` join `terrain` `t` on(((`c`.`nom_table` = 'terrain') and (`c`.`ID_enregistrement` = `t`.`ID_terrain`))))  ;
 
 --
 -- Constraints for dumped tables
@@ -680,7 +680,7 @@ ALTER TABLE `intrant`
   ADD CONSTRAINT `fk_intrant_unite` FOREIGN KEY (`ID_unite`) REFERENCES `unite` (`ID_unite`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `parcelle`
+-- Constraints for table `comportement`
 --
 ALTER TABLE `parcelle`
   ADD CONSTRAINT `fk_parcelle_terrain` FOREIGN KEY (`ID_terrain`) REFERENCES `terrain` (`ID_terrain`) ON UPDATE CASCADE;

@@ -1,4 +1,4 @@
-export default function parcelle() {
+export function modal() {
   document.addEventListener("DOMContentLoaded", () => {
     function openModal(modalId) {
       const modal = document.getElementById(modalId);

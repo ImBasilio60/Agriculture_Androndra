@@ -2,19 +2,6 @@
   flex-grow: 1;
   padding: 2rem;
 }
-
-.header-dashboard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.header-dashboard h2 {
-  font-size: 2rem;
-  color: var(--primary-color);
-}
-
 .dashboard-widgets {
   display: grid;
   gap: 2rem;
@@ -190,54 +177,17 @@ body {
   }
 }
 
-/* Media Queries pour la réactivité */
-
-/* Media query pour les tablettes (entre 481px et 768px) */
-
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
-  .sidebar {
-    width: 100%;
-    height: auto;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px var(--shadow-color);
-    position: relative;
-  }
-  .navigation ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-  .navigation a {
-    padding: 0.5rem;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-size: 0.8rem;
-  }
-  .navigation a i {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-  .logo {
-    display: none;
-  }
   .main-content {
     padding: 1rem;
-  }
-  .header-dashboard {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
   }
   .primary-btn {
     width: 100%;
     justify-content: center;
   }
-  /* Les widgets passent en une colonne sur les mobiles */
   .dashboard-widgets {
     grid-template-areas:
       "parcelles"

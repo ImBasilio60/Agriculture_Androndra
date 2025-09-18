@@ -136,6 +136,8 @@ export function weather() {
       }
     }
 
-    getLocation();
+    if (document.querySelector("body").classList.contains("dashboard-page")) {
+      getLocation();
+    }
   });
 }
