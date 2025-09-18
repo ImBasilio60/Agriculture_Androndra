@@ -158,6 +158,25 @@
           </form>
         </div>
       </div>
+
+      <div id="delete-modal" class="modal">
+        <div class="modal-content small-modal">
+          <span class="close-btn">&times;</span>
+          <h2>Confirmation de suppression</h2>
+          <p>
+            Êtes-vous sûr de vouloir supprimer cet élément ? Cette action est
+            irréversible.
+          </p>
+          <div class="modal-buttons">
+            <button id="confirm-delete-btn" class="danger-btn">
+              Supprimer
+            </button>
+            <button id="cancel-delete-btn" class="secondary-btn">
+              Annuler
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <script type="module" src="../Public/js/app.js"></script>

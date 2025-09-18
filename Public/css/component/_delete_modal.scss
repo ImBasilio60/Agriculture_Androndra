@@ -1,0 +1,55 @@
+#delete-modal {
+  .modal-content {
+    margin: 10% auto;
+  }
+}
+
+.modal-content.small-modal {
+  max-width: 400px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.modal-content.small-modal h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.modal-content.small-modal p {
+  color: var(--text-color-light);
+  margin-bottom: 2rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.danger-btn {
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.danger-btn:hover {
+  background-color: var(--danger-hover);
+}
+
+.secondary-btn {
+  background-color: var(--gray-light);
+  color: var(--text-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.secondary-btn:hover {
+  background-color: var(--border-color);
+}
