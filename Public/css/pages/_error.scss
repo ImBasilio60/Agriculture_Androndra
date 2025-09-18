@@ -1,0 +1,59 @@
+.not-found-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: var(--background-color);
+}
+
+.not-found-container {
+  padding: 2rem;
+  background-color: var(--card-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  max-width: 600px;
+  width: 90%;
+}
+
+.not-found-title {
+  font-size: 8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  animation: bounceIn 0.8s ease-out;
+}
+
+.not-found-message {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.not-found-text {
+  font-size: 1rem;
+  color: var(--text-color-light);
+  margin-bottom: 2rem;
+}
+
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+/* Animation pour le titre */
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
