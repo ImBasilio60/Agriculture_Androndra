@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from Models.parcelle import Parcelle
+from Models.plantation import Plantation
 
 
 class MainController:
@@ -26,7 +27,7 @@ class MainController:
             model_map = {
                 "culture": Culture,
                 "parcelle": Parcelle,
-                "plantation": Parcelle,
+                "plantation": Plantation,
             }
 
             if item_type in model_map:

@@ -1,25 +1,23 @@
 :root {
-  --primary-color: #4caf50; /* Vert principal */
-  --primary-dark: #43a047; /* Vert plus foncé pour le hover */
-  --secondary-color: #555; /* Gris foncé */
-  --text-dark: #222; /* Noir */
-  --text-light: #777; /* Gris clair */
-  --background-color: #f4f7f6; /* Arrière-plan */
-  --surface-color: #fff; /* Surface des cartes et des boîtes */
-  --border-color: #e0e0e0; /* Couleur des bordures */
-  --shadow-color: rgba(0, 0, 0, 0.1); /* Ombre légère */
+  --primary-color: #4caf50;
+  --primary-dark: #43a047;
+  --secondary-color: #555;
+  --text-dark: #222;
+  --text-light: #777;
+  --background-color: #f4f7f6;
+  --surface-color: #fff;
+  --border-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 
   --danger-color: #f44336;
   --danger-hover: #da190b;
 
-  /* Couleurs pour les boutons d'action */
-  --edit-btn-color: #1976d2; /* Bleu pour l'édition */
-  --delete-btn-color: #d32f2f; /* Rouge pour la suppression */
+  --edit-btn-color: #1976d2;
+  --delete-btn-color: #d32f2f;
 
-  /* Couleurs pour l'icône météo */
-  --weather-sun-color: #ffc107; /* Jaune pour le soleil */
-  --weather-rain-color: #2196f3; /* Bleu pour la pluie */
-  --weather-cloud-color: #9e9e9e; /* Gris pour les nuages */
-  --weather-snow-color: #e3f2fd; /* Bleu très clair pour la neige */
-  --weather-storm-color: #616161; /* Gris sombre pour l'orage */
+  --weather-sun-color: #ffc107;
+  --weather-rain-color: #2196f3;
+  --weather-cloud-color: #9e9e9e;
+  --weather-snow-color: #e3f2fd;
+  --weather-storm-color: #616161;
 }

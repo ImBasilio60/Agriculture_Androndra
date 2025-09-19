@@ -122,3 +122,16 @@ class Model:
         except Exception as e:
             print(f"get all available value error: {e}")
             return []
+
+    @classmethod
+    def count_all(cls):
+        try:
+            base = Base()
+            table_name = cls.__name__.lower()
+            query = f"SELECT COUNT(*) as count FROM {table_name}"
+            base.cur.execute(query)
+            result = base.cur.fetchone()
+            return result['count'] if result else 0
+        except Exception as e:
+            print(f"Erreur de comptage pour la table {table_name}: {e}")
+            return 0
