@@ -9,7 +9,8 @@
 }
 
 .logo h1 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  font-style: italic;
   color: var(--primary-color);
   text-align: center;
   margin-bottom: 2rem;
@@ -27,7 +28,9 @@
   color: var(--text-dark);
   text-decoration: none;
   border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .navigation a:hover,

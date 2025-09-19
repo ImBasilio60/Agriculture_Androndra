@@ -25,7 +25,8 @@ class MainController:
 
             model_map = {
                 "culture": Culture,
-                "parcelle": Parcelle
+                "parcelle": Parcelle,
+                "plantation": Parcelle,
             }
 
             if item_type in model_map:

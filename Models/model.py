@@ -95,3 +95,30 @@ class Model:
             base.con.commit()
         except Exception as e:
             print(f"delete value error: {e}")
+
+    @classmethod
+    def read_plantation(cls):
+        try:
+            base = Base()
+            query = "CALL read_plantation()"
+            base.cur.execute(query)
+            list_dict = base.cur.fetchall()
+            base.cur.nextset()
+            return list_dict
+        except Exception as e:
+            print(f"get all available value error: {e}")
+            return []
+
+    @classmethod
+    def get_all_available(cls):
+        try:
+            base = Base()
+            procedure_name = f"parcelle_disponible"
+            query = f"CALL {procedure_name}()"
+            base.cur.execute(query)
+            list_dict = base.cur.fetchall()
+            base.cur.nextset()
+            return list_dict
+        except Exception as e:
+            print(f"get all available value error: {e}")
+            return []

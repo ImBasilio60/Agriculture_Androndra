@@ -31,14 +31,8 @@ export function search() {
       setupTableSearch("parcelle-search", ".data-table table");
     } else if (document.body.classList.contains("cultures-page")) {
       setupTableSearch("culture-search", ".data-table table");
-    } else if (document.body.classList.contains("intrants-page")) {
-      setupTableSearch("intrant-search", ".data-table table");
-    } else if (document.body.classList.contains("recoltes-page")) {
-      setupTableSearch("recolte-search", ".data-table table");
-    } else if (document.body.classList.contains("suivis-page")) {
-      setupTableSearch("suivi-search", ".data-table table");
-    } else if (document.body.classList.contains("localisations-page")) {
-      setupTableSearch("localisation-search", ".data-table table");
+    } else if (document.body.classList.contains("plantations-page")) {
+      setupTableSearch("plantation-search", ".data-table table");
     }
   });
 }

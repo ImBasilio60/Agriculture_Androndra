@@ -3,29 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestion des Intrants - Androndra</title>
-    <link rel="stylesheet" href="../Public/css/main.css" />
+    <title>Gestion des Plantations - Androndra</title>
+    <link rel="stylesheet" href="/Public/css/main.css" />
   </head>
-  <body class="intrants-page">
+  <body class="plantations-page">
     <aside class="sidebar">
       <div class="logo">
-        <h1>Androndra</h1>
+        <h1>Nyvoliko</h1>
       </div>
       <nav class="navigation">
         <ul>
           <li>
-            <a href="/" class="active"
-              ><i class="fas fa-home"></i> Tableau de bord</a
-            >
+            <a href="/"><i class="fas fa-home"></i> Tableau de bord</a>
           </li>
           <li>
-            <a href="/parcels"><i class="fas fa-seedling"></i> Parcelles</a>
+            <a href="/parcelles"><i class="fas fa-seedling"></i> Parcelles</a>
           </li>
           <li>
             <a href="/cultures"><i class="fas fa-leaf"></i> Cultures</a>
           </li>
           <li>
-            <a href="/plantations"><i class="fas fa-tint"></i> Plantations</a>
+            <a href="/plantations" class="active"
+              ><i class="fas fa-tint"></i> Plantations</a
+            >
           </li>
           <li>
             <a href="/corbeille"><i class="fas fa-trash"></i> Corbeille</a>
@@ -37,22 +37,22 @@
     <main class="main-content">
       <header class="header-dashboard">
         <div class="header-actions">
-          <h2>Gestion des intrants</h2>
+          <h2>Plantations</h2>
           <div class="search-container">
             <i class="fas fa-search"></i>
             <input
               type="text"
-              id="intrant-search"
-              placeholder="Rechercher un intrant..."
+              id="plantation-search"
+              placeholder="Rechercher une plantation..."
             />
           </div>
         </div>
         <button
-          id="add-intrant-btn"
+          id="add-plantation-btn"
           class="primary-btn"
-          data-modal-target="intrant-modal"
+          data-modal-target="plantation-modal"
         >
-          <i class="fas fa-plus"></i> Ajouter un intrant
+          <i class="fas fa-plus"></i> Ajouter une plantation
         </button>
       </header>
 
@@ -60,81 +60,70 @@
         <table>
           <thead>
             <tr>
-              <th>Nom du produit</th>
-              <th>Type</th>
-              <th>Fournisseur</th>
-              <th>Quantité</th>
+              <th>Date de plantation</th>
+              <th>Parcelle</th>
+              <th>Culture</th>
+              <th>Méthode</th>
+              <th>Quantité plantée</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Engrais NPK</td>
-              <td>Engrais</td>
-              <td>AgriFournitures</td>
-              <td>50 kg</td>
-              <td>
-                <button class="action-btn edit-btn" data-id="1">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-btn delete-btn" data-id="1">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Pesticide bio</td>
-              <td>Pesticide</td>
-              <td>BioVert</td>
-              <td>5 litres</td>
-              <td>
-                <button class="action-btn edit-btn" data-id="2">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-btn delete-btn" data-id="2">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Semences de maïs</td>
-              <td>Semence</td>
-              <td>Graines & Co</td>
-              <td>10 kg</td>
-              <td>
-                <button class="action-btn edit-btn" data-id="3">
-                  <i class="fas fa-edit"></i>
-                </button>
-                <button class="action-btn delete-btn" data-id="3">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </td>
-            </tr>
+            {{ table_rows }}
           </tbody>
         </table>
       </section>
 
-      <div id="intrant-modal" class="modal">
+      <div id="plantation-modal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
-          <h2>Ajouter un intrant</h2>
-          <form id="intrant-form">
-            <input type="hidden" id="intrant-id" />
+          <h2>Ajouter une plantation</h2>
+          <form id="plantation-form" action="/plantations/add" method="post">
+            <input type="hidden" id="plantation-id" name="ID_plantation" />
             <div class="form-group">
-              <label for="intrant-nom">Nom du produit</label>
-              <input type="text" id="intrant-nom" required />
+              <label for="plantation-date">Date de plantation</label>
+              <input
+                type="date"
+                id="plantation-date"
+                name="date_plantation_terre"
+                required
+              />
             </div>
             <div class="form-group">
-              <label for="intrant-type">Type</label>
-              <input type="text" id="intrant-type" required />
+              <label for="plantation-parcelle">Parcelle</label>
+              <select id="plantation-parcelle" name="ID_parcelle" required>
+                {{ parcelle_options }}
+              </select>
             </div>
             <div class="form-group">
-              <label for="intrant-fournisseur">Fournisseur</label>
-              <input type="text" id="intrant-fournisseur" />
+              <label for="plantation-culture">Culture</label>
+              <select id="plantation-culture" name="ID_culture" required>
+                {{ culture_options }}
+              </select>
             </div>
             <div class="form-group">
-              <label for="intrant-quantite">Quantité</label>
-              <input type="text" id="intrant-quantite" required />
+              <label for="plantation-methode">Méthode de culture</label>
+              <input
+                type="text"
+                id="plantation-methode"
+                name="methode_culture"
+              />
+            </div>
+            <div class="form-group">
+              <label for="plantation-quantite">Quantité plantée</label>
+              <input
+                type="number"
+                step="0.01"
+                id="plantation-quantite"
+                name="quantite_plantee"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="plantation-unite">Unité</label>
+              <select id="plantation-unite" name="ID_unite" required>
+                {{ unite_options }}
+              </select>
             </div>
             <button type="submit" class="primary-btn">Enregistrer</button>
           </form>
@@ -160,6 +149,6 @@
         </div>
       </div>
     </main>
-    <script type="module" src="../Public/js/app.js"></script>
+    <script type="module" src="/Public/js/app.js"></script>
   </body>
 </html>

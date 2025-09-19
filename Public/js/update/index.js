@@ -1,9 +1,6 @@
 import { parcelle } from "./parcelle.js";
-import { intrant } from "./intrant.js";
+import { plantation } from "./plantation.js";
 import { culture } from "./culture.js";
-import { recolte } from "./recolte.js";
-import { suivi } from "./suivi.js";
-import { localisation } from "./localisation.js";
 
 export default function update() {
   const body = document.body;
@@ -11,20 +8,11 @@ export default function update() {
     case "parcelles-page":
       parcelle();
       break;
-    case "localisations-page":
-      localisation();
-      break;
-    case "intrants-page":
-      intrant();
+    case "plantations-page":
+      plantation();
       break;
     case "cultures-page":
       culture();
-      break;
-    case "suivis-page":
-      suivi();
-      break;
-    case "recoltes-page":
-      recolte();
       break;
   }
 }

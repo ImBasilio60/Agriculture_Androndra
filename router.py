@@ -8,6 +8,7 @@ from Controllers.index import IndexController
 from Controllers.main import MainController
 
 from Controllers.parcelle import ParcelleController
+from Controllers.plantations import PlantationsController
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -19,6 +20,9 @@ routes = {
     "/parcelles": {"GET": ParcelleController.pageParcelles},
     "/parcelles/add": {"POST": ParcelleController.opInsert},
     "/parcelles/update": {"POST": ParcelleController.opUpdate},
+    "/plantations": {"GET": PlantationsController.pagePlantations},
+    "/plantations/add": {"POST": PlantationsController.opInsert},
+    "/plantations/update": {"POST": PlantationsController.opUpdate},
     "/delete": {"POST": MainController.opDelete},
     "/error" : {"GET": MainController.pageError},
 }
