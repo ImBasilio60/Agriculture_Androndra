@@ -11,6 +11,7 @@ export function culture() {
       modalTitle.textContent = "Ajouter une culture";
       cultureForm.reset();
       cultureIdInput.value = "";
+      cultureForm.setAttribute("action", "/cultures/add");
       cultureModal.style.display = "block";
     });
 
@@ -24,15 +25,24 @@ export function culture() {
         const variete = row.cells[1].textContent;
         const cycle = row.cells[2].textContent;
         const saisonnalite = row.cells[3].textContent;
-
         cultureIdInput.value = id;
         document.getElementById("culture-nom").value = nom;
         document.getElementById("culture-variete").value = variete;
         document.getElementById("culture-cycle").value = parseInt(cycle);
         document.getElementById("culture-saisonnalite").value = saisonnalite;
-
+        cultureForm.setAttribute("action", "/cultures/update");
         cultureModal.style.display = "block";
       });
+    });
+
+    cultureModal.querySelector(".close-btn").addEventListener("click", () => {
+      cultureModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === cultureModal) {
+        cultureModal.style.display = "none";
+      }
     });
   });
 }

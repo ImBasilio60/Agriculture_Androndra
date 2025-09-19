@@ -9,6 +9,8 @@ export function delete_modal() {
       button.addEventListener("click", (event) => {
         const row = event.target.closest("tr");
         itemToDelete = row;
+        itemToDelete.dataset.id = button.dataset.id;
+        itemToDelete.dataset.type = button.dataset.type || "culture";
         deleteModal.style.display = "block";
       });
     });
@@ -20,10 +22,32 @@ export function delete_modal() {
 
     confirmDeleteBtn.addEventListener("click", () => {
       if (itemToDelete) {
-        itemToDelete.remove();
-        deleteModal.style.display = "none";
-        itemToDelete = null;
-        console.log("Élément supprimé !");
+        const id = itemToDelete.dataset.id;
+        const type = itemToDelete.dataset.type;
+
+        // On envoie les données au serveur
+        const data = new URLSearchParams({ id: id, type: type }).toString();
+
+        fetch("/delete", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: data,
+        })
+          .then((response) => {
+            if (response.ok) {
+              itemToDelete.remove();
+              deleteModal.style.display = "none";
+              itemToDelete = null;
+              console.log(`Élément ${type} avec ID ${id} supprimé !`);
+            } else {
+              console.error("Erreur lors de la suppression.");
+            }
+          })
+          .catch((error) => {
+            console.error("Erreur réseau:", error);
+          });
       }
     });
 
