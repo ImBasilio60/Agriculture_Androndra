@@ -3,6 +3,9 @@ import urllib.parse
 import json
 from pathlib import Path
 
+from Models.parcelle import Parcelle
+
+
 class MainController:
     @staticmethod
     async def opDelete(scope, receive, send):
@@ -22,6 +25,7 @@ class MainController:
 
             model_map = {
                 "culture": Culture,
+                "parcelle": Parcelle
             }
 
             if item_type in model_map:

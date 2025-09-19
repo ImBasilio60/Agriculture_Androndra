@@ -1,11 +1,13 @@
 # Fichier : router.py
+import mimetypes
+from pathlib import Path
+import re
 
 from Controllers.cultures import CulturesController
 from Controllers.index import IndexController
 from Controllers.main import MainController
-from pathlib import Path
-import mimetypes
-import re
+
+from Controllers.parcelle import ParcelleController
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -14,6 +16,9 @@ routes = {
     "/cultures": {"GET": CulturesController.pageCultures},
     "/cultures/add": {"POST": CulturesController.opInsert},
     "/cultures/update": {"POST": CulturesController.opUpdate},
+    "/parcelles": {"GET": ParcelleController.pageParcelles},
+    "/parcelles/add": {"POST": ParcelleController.opInsert},
+    "/parcelles/update": {"POST": ParcelleController.opUpdate},
     "/delete": {"POST": MainController.opDelete},
     "/error" : {"GET": MainController.pageError},
 }

@@ -1,3 +1,5 @@
+// Fichier : parcelle.js
+
 export function parcelle() {
   document.addEventListener("DOMContentLoaded", () => {
     const parcelleModal = document.getElementById("parcelle-modal");
@@ -9,6 +11,8 @@ export function parcelle() {
     const addParcelleBtn = document.getElementById("add-parcelle-btn");
     addParcelleBtn.addEventListener("click", () => {
       modalTitle.textContent = "Ajouter une parcelle";
+      submitButton.textContent = "Enregistrer";
+      parcelleForm.action = "/parcelles/add";
       parcelleForm.reset();
       parcelleIdInput.value = "";
       parcelleModal.style.display = "block";
@@ -18,6 +22,7 @@ export function parcelle() {
       button.addEventListener("click", (event) => {
         modalTitle.textContent = "Modifier une parcelle";
         submitButton.textContent = "Modifier";
+        parcelleForm.action = "/parcelles/update";
 
         const row = event.target.closest("tr");
         const id = button.dataset.id;
@@ -28,7 +33,7 @@ export function parcelle() {
         parcelleIdInput.value = id;
         document.getElementById("parcelle-nom").value = nom;
         document.getElementById("parcelle-superficie").value =
-          parseInt(superficie);
+          parseFloat(superficie);
         document.getElementById("parcelle-sol").value = typeSol;
 
         parcelleModal.style.display = "block";

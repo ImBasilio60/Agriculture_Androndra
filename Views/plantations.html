@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestion des Récoltes - Androndra</title>
+    <title>Gestion des Intrants - Androndra</title>
     <link rel="stylesheet" href="../Public/css/main.css" />
   </head>
-  <body class="recoltes-page">
+  <body class="intrants-page">
     <aside class="sidebar">
       <div class="logo">
         <h1>Androndra</h1>
@@ -14,33 +14,21 @@
       <nav class="navigation">
         <ul>
           <li>
-            <a href="index.html"><i class="fas fa-home"></i> Tableau de bord</a>
-          </li>
-          <li>
-            <a href="parcelles.html"
-              ><i class="fas fa-seedling"></i> Parcelles</a
+            <a href="/" class="active"
+              ><i class="fas fa-home"></i> Tableau de bord</a
             >
           </li>
           <li>
-            <a href="cultures.html"><i class="fas fa-leaf"></i> Cultures</a>
+            <a href="/parcels"><i class="fas fa-seedling"></i> Parcelles</a>
           </li>
           <li>
-            <a href="intrants.html"
-              ><i class="fas fa-dolly-flatbed"></i> Intrants</a
-            >
+            <a href="/cultures"><i class="fas fa-leaf"></i> Cultures</a>
           </li>
           <li>
-            <a href="recoltes.html" class="active"
-              ><i class="fas fa-truck-loading"></i> Récoltes</a
-            >
+            <a href="/plantations"><i class="fas fa-tint"></i> Plantations</a>
           </li>
           <li>
-            <a href="suivis.html"><i class="fas fa-tasks"></i> Suivis</a>
-          </li>
-          <li>
-            <a href="localisations.html"
-              ><i class="fas fa-map-marker-alt"></i> Localisations</a
-            >
+            <a href="/corbeille"><i class="fas fa-trash"></i> Corbeille</a>
           </li>
         </ul>
       </nav>
@@ -49,22 +37,22 @@
     <main class="main-content">
       <header class="header-dashboard">
         <div class="header-actions">
-          <h2>Gestion des récoltes</h2>
+          <h2>Gestion des intrants</h2>
           <div class="search-container">
             <i class="fas fa-search"></i>
             <input
               type="text"
-              id="recolte-search"
-              placeholder="Rechercher une récolte..."
+              id="intrant-search"
+              placeholder="Rechercher un intrant..."
             />
           </div>
         </div>
         <button
-          id="add-recolte-btn"
+          id="add-intrant-btn"
           class="primary-btn"
-          data-modal-target="recolte-modal"
+          data-modal-target="intrant-modal"
         >
-          <i class="fas fa-plus"></i> Ajouter une récolte
+          <i class="fas fa-plus"></i> Ajouter un intrant
         </button>
       </header>
 
@@ -72,19 +60,19 @@
         <table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Culture</th>
-              <th>Parcelle</th>
+              <th>Nom du produit</th>
+              <th>Type</th>
+              <th>Fournisseur</th>
               <th>Quantité</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>25 juin 2025</td>
-              <td>Tomate</td>
-              <td>Parcelle A1</td>
-              <td>15 kg</td>
+              <td>Engrais NPK</td>
+              <td>Engrais</td>
+              <td>AgriFournitures</td>
+              <td>50 kg</td>
               <td>
                 <button class="action-btn edit-btn" data-id="1">
                   <i class="fas fa-edit"></i>
@@ -95,10 +83,10 @@
               </td>
             </tr>
             <tr>
-              <td>22 juin 2025</td>
-              <td>Salade</td>
-              <td>Parcelle B3</td>
-              <td>5 kg</td>
+              <td>Pesticide bio</td>
+              <td>Pesticide</td>
+              <td>BioVert</td>
+              <td>5 litres</td>
               <td>
                 <button class="action-btn edit-btn" data-id="2">
                   <i class="fas fa-edit"></i>
@@ -109,10 +97,10 @@
               </td>
             </tr>
             <tr>
-              <td>18 juin 2025</td>
-              <td>Carotte</td>
-              <td>Parcelle C2</td>
-              <td>20 kg</td>
+              <td>Semences de maïs</td>
+              <td>Semence</td>
+              <td>Graines & Co</td>
+              <td>10 kg</td>
               <td>
                 <button class="action-btn edit-btn" data-id="3">
                   <i class="fas fa-edit"></i>
@@ -126,27 +114,27 @@
         </table>
       </section>
 
-      <div id="recolte-modal" class="modal">
+      <div id="intrant-modal" class="modal">
         <div class="modal-content">
           <span class="close-btn">&times;</span>
-          <h2>Ajouter une récolte</h2>
-          <form id="recolte-form">
-            <input type="hidden" id="recolte-id" />
+          <h2>Ajouter un intrant</h2>
+          <form id="intrant-form">
+            <input type="hidden" id="intrant-id" />
             <div class="form-group">
-              <label for="recolte-date">Date</label>
-              <input type="date" id="recolte-date" required />
+              <label for="intrant-nom">Nom du produit</label>
+              <input type="text" id="intrant-nom" required />
             </div>
             <div class="form-group">
-              <label for="recolte-culture">Culture</label>
-              <input type="text" id="recolte-culture" required />
+              <label for="intrant-type">Type</label>
+              <input type="text" id="intrant-type" required />
             </div>
             <div class="form-group">
-              <label for="recolte-parcelle">Parcelle</label>
-              <input type="text" id="recolte-parcelle" required />
+              <label for="intrant-fournisseur">Fournisseur</label>
+              <input type="text" id="intrant-fournisseur" />
             </div>
             <div class="form-group">
-              <label for="recolte-quantite">Quantité (kg)</label>
-              <input type="number" id="recolte-quantite" required />
+              <label for="intrant-quantite">Quantité</label>
+              <input type="text" id="intrant-quantite" required />
             </div>
             <button type="submit" class="primary-btn">Enregistrer</button>
           </form>
