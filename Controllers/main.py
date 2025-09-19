@@ -1,6 +1,7 @@
 from Models.culture import Culture
 import urllib.parse
 import json
+from pathlib import Path
 
 class MainController:
     @staticmethod
@@ -48,6 +49,41 @@ class MainController:
             await send({"type": "http.response.body", "body": b""})
         except Exception as e:
             print(f"Erreur dans opDelete : {e}")
+            await send(
+                {
+                    "type": "http.response.start",
+                    "status": 500,
+                    "headers": [(b"content-type", b"text/plain")],
+                }
+            )
+            await send({"type": "http.response.body", "body": f"Erreur interne du serveur: {e}".encode("utf-8")})
+
+    @staticmethod
+    async def pageError(scope, receive, send):
+        try:
+            html_path = Path("Views/Error.html")
+            if not html_path.is_file():
+                await send(
+                    {
+                        "type": "http.response.start",
+                        "status": 404,
+                        "headers": [(b"content-type", b"text/plain")],
+                    }
+                )
+                await send({"type": "http.response.body", "body": b"404 - Page non trouvee"})
+                return
+
+            body = html_path.read_bytes()
+            await send(
+                {
+                    "type": "http.response.start",
+                    "status": 404,
+                    "headers": [(b"content-type", b"text/html; charset=utf-8")],
+                }
+            )
+            await send({"type": "http.response.body", "body": body})
+        except Exception as e:
+            print(f"Erreur lors de la lecture de la page d'erreur : {e}")
             await send(
                 {
                     "type": "http.response.start",

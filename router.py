@@ -14,7 +14,8 @@ routes = {
     "/cultures": {"GET": CulturesController.pageCultures},
     "/cultures/add": {"POST": CulturesController.opInsert},
     "/cultures/update": {"POST": CulturesController.opUpdate},
-    "/delete": {"POST": MainController.opDelete}
+    "/delete": {"POST": MainController.opDelete},
+    "/error" : {"GET": MainController.pageError},
 }
 
 async def route_request(scope, receive, send):
@@ -45,11 +46,4 @@ async def route_request(scope, receive, send):
     if handler:
         await handler(scope, receive, send)
     else:
-        await send(
-            {
-                "type": "http.response.start",
-                "status": 404,
-                "headers": [(b"content-type", b"text/plain")],
-            }
-        )
-        await send({"type": "http.response.body", "body": b"404 - Page non trouvee"})
+        await MainController.pageError(scope, receive, send)
